@@ -8,4 +8,4 @@ task :console do
   Pry.start
 end
 
-task c: :console
+task :c => :console

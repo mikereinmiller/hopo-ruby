@@ -15,8 +15,8 @@ module Hopo
       @sorter = sorter
 
       @default_params = {
-        key: Hopo.api_key,
-        line: line
+        :key => Hopo.api_key,
+        :line => line
       }
 
     end
@@ -30,7 +30,7 @@ module Hopo
     def format_response(response)
       # TEMP Hack Until Integral API is cleaned Up....
       if response['status']
-        hash = { errors: [response['message']] }
+        hash = { :errors => [response['message']] }
 
       else
         hash = {}
@@ -38,9 +38,9 @@ module Hopo
         errors = response['results']['errors']
         risk = response['risk']
 
-        hash.merge!( {rates: factor_premiums(rates) } ) unless rates.blank?
-        hash.merge!( {errors: errors} ) unless errors.blank?
-        hash.merge!( {risk: risk} ) unless risk.blank?
+        hash.merge!( {:rates => factor_premiums(rates) } ) unless rates.blank?
+        hash.merge!( {:errors => errors} ) unless errors.blank?
+        hash.merge!( {:risk => risk} ) unless risk.blank?
 
       end
 
