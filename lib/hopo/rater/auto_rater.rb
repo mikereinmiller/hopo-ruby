@@ -7,7 +7,10 @@ module Hopo
 
     def required_fields?
       {
-        zip: 'Five diging Zip Code for location'
+        zip: 'Five diging Zip Code for location',
+        year: 'Not Required - defaults to 2012',
+        make: 'Not Required - defaults to Toyota',
+        model: 'Not Required - defaults to Camry'
       }
     end
 
