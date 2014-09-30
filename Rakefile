@@ -7,3 +7,5 @@ task :console do
   ARGV.clear
   Pry.start
 end
+
+task c: :console
