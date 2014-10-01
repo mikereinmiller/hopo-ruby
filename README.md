@@ -1,6 +1,7 @@
+
 # Hopo::Ruby
 
-TODO: Write a gem description
+A library for using the Honest Policy API, currently supports Auto and Home Raters.
 
 ## Installation
 
@@ -18,14 +19,19 @@ Or install it yourself as:
 
     $ gem install hopo-ruby
 
+
+## Setup
+
+You need to set the **api_key** given by honestpolicy before you can use the raters.  This can be set as simply as:
+
+```ruby
+Hopo.api_key = 'your-unique-api-key'
+```
+
+If you are using rails, you can run the generator to setup a config/initializer file for you.  This file will require the hopo library and add a line to set your api_key.  Make sure you do not commit your actual key to your repository.
+
+    $ rails g hopo:install
+
+
 ## Usage
 
-TODO: Write usage instructions here
-
-## Contributing
-
-1. Fork it ( https://github.com/[my-github-username]/hopo-ruby/fork )
-2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Add some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create a new Pull Request
