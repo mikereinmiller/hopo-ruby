@@ -1,3 +1,4 @@
+[![Code Climate](https://codeclimate.com/github/mikereinmiller/hopo-ruby/badges/gpa.svg)](https://codeclimate.com/github/mikereinmiller/hopo-ruby)
 
 # hopo-ruby
 
