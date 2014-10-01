@@ -1,6 +1,7 @@
-[![Code Climate](https://codeclimate.com/github/mikereinmiller/hopo-ruby/badges/gpa.svg)](https://codeclimate.com/github/mikereinmiller/hopo-ruby)
-
 # hopo-ruby
+
+[![Gem Version](https://badge.fury.io/rb/hopo-ruby.svg)](http://badge.fury.io/rb/hopo-ruby)
+[![Code Climate](https://codeclimate.com/github/mikereinmiller/hopo-ruby/badges/gpa.svg)](https://codeclimate.com/github/mikereinmiller/hopo-ruby)
 
 A library for using the Honest Policy API, currently supports Auto and Home Raters.
 
