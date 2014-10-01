@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["mike@honestpolicy.com"]
   spec.summary       = %q{A simple library for communicating with the Honest Policy API}
   spec.description   = %q{Easily connect to multiple Honest Policy APIs including the Rater, Leads, Vehicles and Carrier Quality}
-  spec.homepage      = ""
+  spec.homepage      = "https://github.com/mikereinmiller/hopo-ruby"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0")
