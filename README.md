@@ -35,4 +35,4 @@ If you are using rails, you can run the generator to setup a config/initializer 
 
 ## Usage
 
-    coming soon
+coming soon
