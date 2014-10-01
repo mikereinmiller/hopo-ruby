@@ -1,5 +1,5 @@
 
-# Hopo::Ruby
+# hopo-ruby
 
 A library for using the Honest Policy API, currently supports Auto and Home Raters.
 
@@ -35,3 +35,4 @@ If you are using rails, you can run the generator to setup a config/initializer 
 
 ## Usage
 
+    coming soon
