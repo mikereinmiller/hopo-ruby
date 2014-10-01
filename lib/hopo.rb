@@ -1,3 +1,14 @@
+#####################################################
+#
+# TODO:
+# => RSpec Test
+# => Better Documentation both GEM & API
+# => Add Leads API, Vehicle API, Quality API
+# => Clean Up Base Code
+#
+#####################################################
+
+
 # Hopo Ruby libs
 require 'net/http'
 require 'uri'
