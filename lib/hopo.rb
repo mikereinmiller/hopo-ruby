@@ -25,6 +25,10 @@ require 'extend/object' unless defined?(::Rails)
 # General
 require 'hopo/errors'
 
+# Utils
+require 'hopo/utils/calculator'
+require 'hopo/utils/sorter'
+
 # API Connections
 require 'hopo/connections/request'
 require 'hopo/connections/response'

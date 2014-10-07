@@ -1,5 +1,8 @@
 module Hopo
   class Rater < API
+    include Hopo::Utils::Calculator
+    include Hopo::Utils::Sorter
+
     attr_accessor :line, :premium_mode, :sorter
 
     BASE_URL = 'https://integral.honestpolicy.com/api'
@@ -40,35 +43,15 @@ module Hopo
         errors = response['results']['errors']
         risk = response['risk']
 
-        hash.merge!( {:rates => factor_premiums(rates) } ) unless rates.blank?
+        calculated_rates = factor_rates(rates, premium_mode)
+        sorted_rates = sort_rates(calculated_rates, sorter)
+
+        hash.merge!( {:rates => sorted_rates} ) unless rates.blank?
         hash.merge!( {:errors => errors} ) unless errors.blank?
         hash.merge!( {:risk => risk} ) unless risk.blank?
-
       end
 
       hash
-    end
-
-    def factor_premiums(rates)
-      premiums = {:monthly => 12, :triannually => 3, :quarterly => 4, :biannually => 2, :annually => 1}
-      divisor = premiums[premium_mode.to_sym] || 1
-
-      rates.each do |k, v|
-        rates[k] = v / divisor
-      end
-
-      sort_rates(rates) unless sorter.blank?
-    end
-
-    def sort_rates(rates)
-      sort = sorter.split('-')
-
-      sorted_rates =
-        if sort[1] == 'desc'
-          Hash[rates.sort_by {|k, v| sort[0]=='companies' ? k : v }.reverse]
-        else
-          Hash[rates.sort_by {|k, v| sort[0]=='companies' ? k : v }]
-        end
     end
 
   end
