@@ -3,13 +3,15 @@ module Hopo
     attr_accessor :line, :premium_mode, :sorter
 
     BASE_URL = 'https://integral.honestpolicy.com/api'
+    API_VERSION = 1
+    API_PATH = 'rates'
 
-    def initialize(line, premium_mode='annually', sorter='premiums-asc', version=1, path='rates')
+    def initialize(line, premium_mode='annually', sorter='premiums-asc')
       unless Hopo.api_key
         raise AuthenticationError, 'No API key provided.  Set your API key using "Hopo.api_key = <API-KEY>".'
       end
 
-      super(BASE_URL, "/v#{version}/#{path}", true)
+      super(BASE_URL, "/v#{API_VERSION}/#{API_PATH}", true)
 
       @premium_mode = premium_mode
       @sorter = sorter
@@ -28,7 +30,7 @@ module Hopo
     end
 
     def format_response(response)
-      # TEMP Hack Until Integral API is cleaned Up....
+      # TEMP Hack for v1 Until Integral API is cleaned Up (v2)
       if response['status']
         hash = { :errors => [response['message']] }
 

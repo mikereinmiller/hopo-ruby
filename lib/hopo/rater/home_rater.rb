@@ -1,8 +1,8 @@
 module Hopo
   class HomeRater < Rater
 
-    def initialize(premium_mode='annually', sorter='premiums-asc', version=1, path='rates')
-      super('home', premium_mode, sorter, version, path)
+    def initialize(premium_mode='annually', sorter='premiums-asc')
+      super('home', premium_mode, sorter)
     end
 
     def required_fields?
