@@ -37,6 +37,9 @@ module Hopo
       if response['status']
         hash = { :errors => [response['message']] }
 
+      elsif response['errors']
+        hash = {:errors => [response['errors']]}
+
       else
         hash = {}
         rates = response['results']['rates']
