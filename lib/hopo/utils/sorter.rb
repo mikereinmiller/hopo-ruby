@@ -5,14 +5,17 @@ module Hopo
       def sort_rates(rates, mode)
         return if rates.blank?
 
-        sort = mode.split('-')
+        sort_value = mode.split('-')[0]
+        sort_direction = mode.split('-')[1]
 
-        sorted_rates =
-          if sort[1] == 'desc'
-            Hash[rates.sort_by {|k, v| sort[0]=='companies' ? k : v }.reverse]
-          else
-            Hash[rates.sort_by {|k, v| sort[0]=='companies' ? k : v }]
-          end
+        # Simple hack for sorting nil values last.
+        if sort_direction == 'desc'
+          puts '**************************'
+          rates.sort_by! { |rate| rate[sort_value] || 0 }.reverse!
+        else
+          puts '--------------------------'
+          rates.sort_by! { |rate| rate[sort_value] || 9999999 }
+        end
       end
 
     end

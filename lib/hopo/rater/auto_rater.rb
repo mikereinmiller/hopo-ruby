@@ -1,15 +1,13 @@
 module Hopo
   class AutoRater < Rater
 
-    def initialize(premium_mode='annually', sorter='premiums-asc')
+    def initialize(premium_mode='annually', sorter='premium-asc')
       super('auto', premium_mode, sorter)
     end
 
     def required_fields?
       {
         :zip => 'Five diging Zip Code for location',
-        :num_vehicles => 'Number representing the total count of vehicles',
-        :num_drivers => 'Number representing the total number of drivers',
         :model_year => 'Not Required - defaults to 2012',
         :make => 'Not Required - defaults to Toyota',
         :model => 'Not Required - defaults to Camry'
@@ -18,9 +16,8 @@ module Hopo
 
     def optional_fields?
       {
-        :test1 => 'test 1',
-        :test2 => 'test 2',
-        :test3 => 'test 3'
+        :num_vehicles => 'Number representing the total count of vehicles',
+        :num_drivers => 'Number representing the total number of drivers'
       }
     end
 

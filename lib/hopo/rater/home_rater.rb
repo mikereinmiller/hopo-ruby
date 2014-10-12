@@ -1,7 +1,7 @@
 module Hopo
   class HomeRater < Rater
 
-    def initialize(premium_mode='annually', sorter='premiums-asc')
+    def initialize(premium_mode='annually', sorter='premium-asc')
       super('home', premium_mode, sorter)
     end
 

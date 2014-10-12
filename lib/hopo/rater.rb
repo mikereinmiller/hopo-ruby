@@ -5,11 +5,12 @@ module Hopo
 
     attr_accessor :line, :premium_mode, :sorter
 
+    # BASE_URL = 'https://integral.dev/api'
     BASE_URL = 'https://integral.honestpolicy.com/api'
-    API_VERSION = 1
+    API_VERSION = 2
     API_PATH = 'rates'
 
-    def initialize(line, premium_mode='annually', sorter='premiums-asc')
+    def initialize(line, premium_mode='annually', sorter='premium-asc')
       unless Hopo.api_key
         raise AuthenticationError, 'No API key provided.  Set your API key using "Hopo.api_key = <API-KEY>".'
       end
@@ -33,28 +34,17 @@ module Hopo
     end
 
     def format_response(response)
-      # TEMP Hack for v1 Until Integral API is cleaned Up (v2)
-      if response['status']
-        hash = { :errors => [response['message']] }
-
-      elsif response['errors']
-        hash = {:errors => [response['errors']]}
-
-      else
-        hash = {}
-        rates = response['results']['rates']
-        errors = response['results']['errors']
-        risk = response['risk']
+      # Calculate and Sort Rates if available.
+      unless response['status']['type'] == 'error'
+        rates = response['data']
 
         calculated_rates = factor_rates(rates, premium_mode)
         sorted_rates = sort_rates(calculated_rates, sorter)
 
-        hash.merge!( {:rates => sorted_rates} ) unless rates.blank?
-        hash.merge!( {:errors => errors} ) unless errors.blank?
-        hash.merge!( {:risk => risk} ) unless risk.blank?
+        response['data'] = sorted_rates
       end
 
-      hash
+      response
     end
 
   end

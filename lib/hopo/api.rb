@@ -43,13 +43,15 @@ module Hopo
     end
 
     def perform_request(method, parameters, type)
-      request = method.new( encode_params( parameters ) )
+      request = method.new( encode_params(parameters) )
       response = http.request(request)
+
       self.send("response_#{type}", response)
     end
 
     def encode_params(parameters)
-      uri.query = URI.encode_www_form( merge_parameters(parameters) )
+      # uri.query = URI.encode_www_form( merge_parameters(parameters) )
+      uri.query = merge_parameters(parameters).to_query
       uri
     end
 
