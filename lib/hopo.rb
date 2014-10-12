@@ -21,6 +21,8 @@ require "hopo/version"
 
 # Extend Ruby Classes
 require 'extend/object' unless defined?(::Rails)
+require 'extend/array' unless defined?(::Rails)
+require 'extend/hash' unless defined?(::Rails)
 
 # General
 require 'hopo/errors'
