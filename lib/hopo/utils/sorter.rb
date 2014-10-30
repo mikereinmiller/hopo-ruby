@@ -10,9 +10,9 @@ module Hopo
 
         # Simple hack for sorting nil values last.
         if sort_direction == 'desc'
-          rates.sort_by! { |rate| rate[sort_value] || 0 }.reverse!
+          rates = rates.sort_by { |rate| rate[sort_value] || 0 }.reverse!
         else
-          rates.sort_by! { |rate| rate[sort_value] || 9999999 }
+          rates = rates.sort_by { |rate| rate[sort_value] || 9999999 }
         end
       end
 

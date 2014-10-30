@@ -31,9 +31,7 @@ module Hopo
     private
 
     def setup_connections
-      # Encode before parse for Ruby 1.8.7
-      @uri = URI.parse(URI.encode(full_path))
-      # @uri = URI.parse(full_path)
+      @uri = URI.parse(full_path)
       @http = Net::HTTP.new(uri.host, uri.port)
 
       if @ssl
@@ -54,7 +52,7 @@ module Hopo
     def encode_params(parameters)
       # uri.query = URI.encode_www_form( merge_parameters(parameters) )
       uri.query = merge_parameters(parameters).to_query
-      uri
+      uri.request_uri
     end
 
     def merge_parameters(parameters)

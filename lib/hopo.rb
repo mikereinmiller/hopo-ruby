@@ -10,7 +10,9 @@
 
 
 # Hopo Ruby libs
+require 'cgi'
 require 'net/http'
+require 'net/https'
 require 'uri'
 require 'openssl'
 require 'json'
