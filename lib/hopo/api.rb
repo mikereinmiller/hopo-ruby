@@ -31,7 +31,9 @@ module Hopo
     private
 
     def setup_connections
-      @uri = URI.parse(full_path)
+      # Encode before parse for Ruby 1.8.7
+      @uri = URI.parse(URI.encode(full_path))
+      # @uri = URI.parse(full_path)
       @http = Net::HTTP.new(uri.host, uri.port)
 
       if @ssl
