@@ -30,7 +30,13 @@ module Hopo
     private
 
     def response_json(response)
-      format_response( JSON.parse(response.body) )
+      _res = begin
+        JSON.parse(response.body)
+      rescue
+        mock_response(response.code)
+      end
+
+      format_response(_res)
     end
 
     def format_response(response)
@@ -45,6 +51,22 @@ module Hopo
       end
 
       response
+    end
+
+    # mocks the type of response we get from our integral server
+    def mock_response(code)
+      {
+        'status' => {
+          'type' => 'error',
+          'code' => code,
+          'message' => 'An Error occured parsing the response',
+          'warnings' => '',
+          'timestamp' => DateTime.now.iso8601
+        },
+        'risk' => {},
+        'response' => {},
+        'data' => []
+      }
     end
 
   end

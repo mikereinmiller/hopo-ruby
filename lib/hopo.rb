@@ -17,6 +17,7 @@ require 'uri'
 require 'openssl'
 require 'json'
 require 'ostruct'
+require 'date'
 
 # Version
 require "hopo/version"
